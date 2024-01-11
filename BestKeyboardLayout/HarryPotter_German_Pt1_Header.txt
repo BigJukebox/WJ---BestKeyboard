@@ -1,0 +1,10 @@
+--------------------------------Header----------------------------------
+Harry Potter and the sorcerers stone - german edition
+
+All << and >> removed.
+
+lines:   8'051
+words:  73'211
+chars: 500'512
+
+source: https://www1.udel.edu/LLL/language/deutsch/handouts/summer_2016/HP!.pdf

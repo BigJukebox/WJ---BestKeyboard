@@ -1,0 +1,32 @@
+
+
+
+Verbesserungen:
+- Gleichmäßige Handauslastung --> Extra-Stat (Problematisch beim QWERTZ-Layout) --> intrinsisch eingebaut
+
+-v Alternierung 2. --> implementierung: Finger können sich auch gleichzeitig bewegen: alternierung intrinsisch eingebaut
+-v Rollen (bzw Handposition) 3. (wer (wert, er, ...))
+-v Distanz minimieren --> Hauptfokus
+-v Manche Fingermovements können gleichzeitig gemacht werden --> qg wg eg ih oh ph - und noch mehr?#T!
+-v Doppelbelegungen einbringen -->v Shift punishment | Und mit alle Tasten so lassen --> wo beste Position? | Und mit Kompartimentierung gleich | Und wohin mit dem ß und ?
+- Kräftigkeit der Finger - Faktor
+
+
+
+
+
+Probleme/Verbesserungen für Design:
+
+- keine Tastendruckzeiten mit einkooporiert --> Tasten werden instant gedrückt
+- Finger begeben sich wieder in Ausgangsstellung, manchmal nicht ganz akkurat --> siehe "Tat" (Finger bleibt eigentlich auf T, statt wieder auf F zurückzukehren)
+- Generell keine Handbewegung/Handphysiologie eingebaut --> Simulation nötig
+--> Kann keine Aussagen über Bequemlichkeit treffen (obwohl das eher nicht so wichtig ist, auch hingehend der Tatsache, dass die Bewegungen auf einer Tastatur im allgemeinen sich eigentlich im Rahmen halten)
+- Fehleranfälligkeit nicht in Betracht gezogen (Computer schreibt selbstverständlich Fehlerlos - ein Mensch nicht) --> Psychologie, Physiologie
+
+- natürlich nie perfektes Optimum, man kann den code auch noch länger runnen lassen, vieleicht findet man ja was besseres :)
+
+
+
+
+
+

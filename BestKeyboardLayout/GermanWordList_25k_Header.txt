@@ -1,0 +1,7 @@
+--------------------------------Header----------------------------------
+The frequency distribution for attribute 'word' in corpus 'internet-de'
+For more information visit http://corpus.leeds.ac.uk/list.html
+ - corpus size: 187789449 tokens
+ - lexicon size: 4394346 types
+
+source: http://corpus.leeds.ac.uk/list.html
