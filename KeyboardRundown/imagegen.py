@@ -1,5 +1,7 @@
 from PIL import Image, ImageFont, ImageDraw
 from colour import Color
+from pathlib import Path
+root_dir = Path(__file__).resolve().parent.parent
 
 def interpolate(color, targetcolor, gradient):
     r1, g1, b1 = color
@@ -28,6 +30,16 @@ _heatmaptype_ = "blue-yellow"
 
 
 offset = 20
+
+
+# ------------Main Settings----------------
+
+_keyboard_ = [",;","g","p","ü","ö","j","f",".:","w","z","ä","<>|","t","i","r","u","a","m","s","e€","n","d","l","-_","+*~","o","c","h","x","k","v","q@","b","y","#'"]
+
+_save_ = True
+_name_ = "2.0_(long).png"
+_show_ = True
+
 # ------------------------------------
 
 
@@ -56,8 +68,7 @@ def generatekeyboard(keyboard, mark = None, markcolor = None, colormap = None, h
     frequencymax = 17.09
     frequencymin = 0.02
 
-
-    image = Image.open("C:\\Users\\max.stephan\\Desktop\\Projects\\KeyboardRundown\\blankkeyboard2.png").convert("RGB")
+    image = Image.open(root_dir / "KeyboardRundown" / "blankkeyboard1.png").convert("RGB")
     draw = ImageDraw.Draw(image)
 
 
@@ -77,10 +88,8 @@ def generatekeyboard(keyboard, mark = None, markcolor = None, colormap = None, h
 
 
 
-
-
-    normalfont = ImageFont.truetype("C:\\Users\\max.stephan\\Desktop\\Projects\\KeyboardRundown\\font\\Tenso-Regular.otf", 29)
-    offsetfont= ImageFont.truetype("C:\\Users\\max.stephan\\Desktop\\Projects\\KeyboardRundown\\font\\Tenso-Regular.otf", 22)
+    normalfont = ImageFont.truetype((root_dir / "KeyboardRundown" / "font" / "Tenso-Regular.otf").__str__(), 29)
+    offsetfont= ImageFont.truetype((root_dir / "KeyboardRundown" / "font" / "Tenso-Regular.otf").__str__(), 22)
 
     # drawing text size
     for i in range(len(keys)):
@@ -120,3 +129,17 @@ def generatekeyboard(keyboard, mark = None, markcolor = None, colormap = None, h
 
 def showkeyboard(keyboard, mark = None, markcolor = None, colormap = None, heatmaptype = None):
     generatekeyboard(keyboard, mark, markcolor, colormap, heatmaptype).show()
+
+
+
+if __name__ == "__main__":
+
+    if _save_ and not (_name_ == "" or _name_ is None):
+        if _show_:
+            kbimg = generatekeyboard(_keyboard_, _mark_, _markcolor_, _colormap_, _heatmaptype_)
+            kbimg.save((root_dir / "KeyboardRundown" / "output" / _name_).__str__())
+            kbimg.show()
+        else:
+            generatekeyboard(_keyboard_, _mark_, _markcolor_, _colormap_, _heatmaptype_).save((root_dir / "KeyboardRundown" / "output" / _name_).__str__())
+    else:
+        showkeyboard(_keyboard_, _mark_, _markcolor_, _colormap_, _heatmaptype_)

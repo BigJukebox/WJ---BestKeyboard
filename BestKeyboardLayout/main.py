@@ -15,7 +15,7 @@ root_dir = Path(__file__).resolve().parent.parent
 # - nur für show() Funktion
 #import sys
 #sys.path.append(r"C:\Users\max.stephan\Desktop\Projects\KeyboardRundown")
-import imagegen as KeyboardGenerator
+#import imagegen as KeyboardGenerator
 
 
 
@@ -79,7 +79,7 @@ class Keyboard:
     keys = []
     score = 0
 
-    def __init__(self, keys: list, score: int = 0):
+    def __init__(self, keys: list, score: float = 0):
         self.keys = keys
         self.score = score
 
@@ -160,21 +160,20 @@ class Keyboard:
 
 
             # shift punishement
-            match modifier:
-                case 1:  # SHIFT
-                    if finger < 0: #rightshift
-                        moddistance = self.keydistance(accordingkey[4], 36)
-                        accordingkey[4] = 36
-                        Keyboard.resetfingers(accordingkey, 4)
+            if modifier == 1: # SHIFT
+                if finger < 0: #rightshift
+                    moddistance = self.keydistance(accordingkey[4], 36)
+                    accordingkey[4] = 36
+                    Keyboard.resetfingers(accordingkey, 4)
 
-                    else: #leftshift
-                        moddistance = self.keydistance(accordingkey[-4], 35)
-                        accordingkey[-4] = 35
-                        Keyboard.resetfingers(accordingkey, -4)
+                else: #leftshift
+                    moddistance = self.keydistance(accordingkey[-4], 35)
+                    accordingkey[-4] = 35
+                    Keyboard.resetfingers(accordingkey, -4)
 
-                case 2:  # ALT
-                    moddistance = 2
-                    Keyboard.resetfingers(accordingkey, 5)
+            elif modifier == 2:  # ALT
+                moddistance = 2
+                Keyboard.resetfingers(accordingkey, 5)
 
 
 
@@ -679,7 +678,7 @@ SWAPPINGNUMBER2 = lambda x : int(((-4/81)*((x-9)**2))+6.5)
 
 FITNESSFUNCTION = fitness_combined
 
-LOGS = "log1_V2.0.txt"
+LOGS = "log2_V2.0_(long)2.txt"
 
 VERBOSE = 1
 
@@ -687,9 +686,18 @@ GENERATIONSIZE = 60
 
 BESTWINDOWSIZE = 10
 
-STARTINGCONFIG = []
+STARTINGCONFIG = [Keyboard([",;","g","w","p","ü","j","b",".:","m","z","q@","-_","r","i","t","u","a","f","s","e€","n","d","l","+*~","<>|","o","c","h","x","y","k","ö","ä","v","#'"], 3134574.1032914915),
+Keyboard([",;","g","w","x","p","j","b",".:","m","z","q@","-_","r","i","t","u","a","f","s","e€","n","d","l","+*~","<>|","o","c","h","ü","y","k","ö","ä","v","#'"], 3136201.1369537795),
+Keyboard([",;","g","w","x","p","j","b",".:","m","z","q@","-_","r","i","t","u","a","f","s","e€","n","d","l","+*~","#'","o","c","h","ü","y","k","ö","ä","v","<>|"], 3136234.7022395935),
+Keyboard([",;","g","w","x","p","j","b",".:","m","z","q@","-_","r","i","t","u","a","f","s","e€","n","d","l","+*~","<>|","o","c","h","ü","ä","k","ö","v","y","#'"], 3136881.245259069),
+Keyboard([",;","g","w","x","p","j","b",".:","m","z","q@","-_","r","i","t","u","a","f","s","e€","n","d","l","+*~","#'","o","c","h","ü","ä","k","ö","v","y","<>|"], 3136914.810544883),
+Keyboard([",;","g","w","x","p","j","b",".:","m","z","q@","-_","r","i","t","u","a","f","s","e€","n","d","l","+*~","<>|","o","y","h","ü","c","k","ö","ä","v","#'"], 3137110.686088266),
+Keyboard([",;","g","w","p","ü","j","b",".:","m","z","q@","-_","r","i","t","u","a","f","s","e€","n","d","l","+*~","<>|","o","c","h","x","y","k","ö","v","ä","#'"], 3140539.885698707),
+Keyboard([",;","g","w","p","ü","j","b",".:","m","z","q@","-_","r","i","t","u","a","f","s","e€","n","d","l","+*~","#'","o","c","h","x","y","k","ö","v","ä","<>|"], 3140573.450984521),
+Keyboard([",;","g","w","p","x","j","b",".:","m","z","q@","-_","r","i","t","u","a","f","s","e€","n","d","l","+*~","<>|","o","c","h","ü","y","k","ö","ä","v","#'"], 3141114.651392505),
+Keyboard([",;","g","w","p","x","j","b",".:","m","z","q@","-_","r","i","t","u","a","f","s","e€","n","d","l","+*~","#'","o","c","h","ü","y","k","ö","ä","v","<>|"], 3141148.216678319)]
 
-STARTINGTIME = 0
+STARTINGTIME = 14660.429968833923
 
 #--------------------------------------------------------MAIN-----------------------------------------------------------
 
@@ -713,7 +721,7 @@ if __name__ == "__main__":
         first = True
         while not stop.is_set():
             best = []
-            if len(STARTINGCONFIG) == BESTWINDOWSIZE: best = STARTINGCONFIG.copy(); break
+            if len(STARTINGCONFIG) == BESTWINDOWSIZE: best = STARTINGCONFIG.copy(); alltimebest = STARTINGCONFIG.copy(); first = False
 
 
             if VERBOSE: print(f"\rcomputing fitness...         ", end="\n")

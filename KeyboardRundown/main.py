@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 from os import startfile
 from PIL import Image, ImageFont, ImageDraw
-import scipy
+#import scipy
 import numpy as np
 import math
 import imagegen
@@ -12,9 +12,9 @@ root_dir = Path(__file__).resolve().parent.parent
 
 
 #---------------------------
-dataname= "log1_V2.0.txt"
+dataname= "log2_V2.0_(long).txt"
 
-filename = "test2.mp4"
+filename = ""
 
 framerate = 60
 length = 10
@@ -57,7 +57,7 @@ print(f"estimated time: {int(t/60)}:{int(t)%60}")
 fig, ax = plt.subplots(2, 1)
 data = []
 
-if filename == "default" or filename == "" or filename is None: filename = dataname # default filename
+if filename == "default" or filename == "" or filename is None: filename = dataname[:-3] + "mp4" # default filename
 with open(datastr, "r") as file:
     for line in file.read().split("\n"):
         if "---------------------" in line: break
@@ -123,7 +123,7 @@ def anim(frame):
 fr = length*framerate
 t1 = time.time()
 ani = animation.FuncAnimation(fig=fig, func=anim, frames=fr, interval=stepsize, repeat=False)
-ani.save(filename, fps= framerate, dpi=dpi)
+ani.save((root_dir / "KeyboardRundown" / "output" / filename).__str__(), fps= framerate, dpi=dpi)
 totaltime = time.time() - t1
 print(totaltime)
 with open("timeestimates.txt", "a") as d2:
